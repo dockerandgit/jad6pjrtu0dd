@@ -18,8 +18,5 @@ RUN mkdir /config
 # Set the working directory
 WORKDIR /config
 
-# Make your script executable
-RUN chmod +x /config/script.sh
-
 # Set the entrypoint or command to run your external script
 ENTRYPOINT ["bash", "/config/script.sh"]
