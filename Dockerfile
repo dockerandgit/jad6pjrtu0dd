@@ -12,14 +12,14 @@ RUN apt-get update && apt-get install -y \
     findutils \
     && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
-WORKDIR /app
+# Create the configuration directory
+RUN mkdir /config
 
-# Copy your script and any other necessary files into the container
-COPY /script.sh /app/
+# Set the working directory
+WORKDIR /config
 
 # Make your script executable
-RUN chmod +x /app/script.sh
+RUN chmod +x /config/script.sh
 
-# Set the entrypoint to execute your script
-ENTRYPOINT ["/app/script.sh"]
+# Set the entrypoint or command to run your external script
+ENTRYPOINT ["bash", "/config/script.sh"]
